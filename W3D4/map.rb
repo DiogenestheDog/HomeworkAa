@@ -16,8 +16,27 @@ class Map
     end
 
     def set(tuple)
+        return false if tuple.length != 2
         key, value = tuple
-        return false if @data.any? { |tuple| tuple.first ==  key}
-        @data << [key, value]
+        if @data.any? { |tuple| tuple.first ==  key}
+            self.delete(key)
+            @data << [key, value]
+        else
+            @data << [key, value]
+        end
+    end
+
+    def get(key)
+        keys = @data.map { |tuple| tuple.first }
+        @data[keys.index(key)][1]
+    end
+
+    def delete(key)
+        keys = @data.map { |tuple| tuple.first }
+        @data.slice!(keys.index(key))
+    end
+
+    def show
+        @data
     end
 end
