@@ -1,5 +1,6 @@
   class LRUCache
     def initialize
+
     end
 
     def count
@@ -16,6 +17,9 @@
 
     private
     # helper methods go here!
+    def head
+        
+    end
 
   end
 
@@ -23,6 +27,11 @@
 
     def initialize(val, prev, following)
         @val = val
+        @prev = prev
+        @following = following
+    end
+
+    def move(prev, following)
         @prev = prev
         @following = following
     end
