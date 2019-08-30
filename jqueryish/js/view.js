@@ -82,8 +82,8 @@ View.prototype.exercise7 = function(){
   //You should push the button for exercise 6 first to try it on the
   //rainbow.
   $('.square').each(function() {
-    $(this).on('hover', function() {
-      console.log(this);
+    $(this).on('mouseenter', function() {
+      console.log($(this).css('background-color'));
     });
   });
   //your code here!
