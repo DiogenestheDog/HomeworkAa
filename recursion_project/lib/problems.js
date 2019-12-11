@@ -192,7 +192,6 @@ function pathFinder(directories, targetFile) {
     for (let i = 0; i < keys.length; i++) {
         if (keys[i][0] === "/") {
             path = pathFinder(directories[keys[i]], targetFile);
-            debugger;
             path = path === null ? null : path[0] === "/" ? `${keys[i]}${path}` : `${keys[i]}/${path}`;
             if (path) break;
         } else {
@@ -201,7 +200,6 @@ function pathFinder(directories, targetFile) {
     }
     return path;
 }
-
 
 module.exports = {
     lucasNumber,
