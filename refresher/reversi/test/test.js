@@ -234,6 +234,7 @@ describe("Board", function () {
 
   describe('#validMove', function () {
     it('should return false for an occupied position', function () {
+      debugger;
       assert.equal(testBoard.validMove([3, 4], 'black'), false);
     });
 
