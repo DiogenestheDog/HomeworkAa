@@ -121,21 +121,17 @@ Board.prototype._positionsToFlip = function (pos, color, dir, piecesToFlip) {
 //   } else { return false; }
 // };
 
-Board.prototype.validMove = function (pos, color) {
-  if (this.isOccupied(pos)) {
-    return false;
-  }
-
-  for (let i = 0; i < Board.DIRS.length; i++) {
-    const piecesToFlip =
-      this._positionsToFlip(pos, color, Board.DIRS[i]);
-    if (piecesToFlip.length) {
-      return true;
+Board.prototype.validMove = function(pos, color) {
+  if (!this.isOccupied(pos)) {
+    for (let i = 0; i < Board.DIRS.length; i++) {
+      const pieces = this._positionsToFlip(pos, color, Board.DIRS[i]);
+      if (pieces.length > 0) {
+        return true;
+      }
     }
   }
-
   return false;
-};
+}
 
 /**
  * Adds a new piece of the given color to the given position, flipping the
@@ -144,14 +140,14 @@ Board.prototype.validMove = function (pos, color) {
  * Throws an error if the position represents an invalid move.
  */
 Board.prototype.placePiece = function (pos, color) {
-  if (true) {
-    const positionsToFlip = this._positionsToFlip(pos);
-    positionsToFlip.forEach( function(position) {
-      this.getPiece(position).color = color;
-    }, this);
-  } else {
-    throw new Error("Invalid Move");
+  if (!this.validMove(pos, color)) {
+    throw new Error("Invalid Move!");
+  } 
+  let pieces = [];
+  for (let i = 0; i < Board.DIRS.length; i++) {
+    pieces = pieces.concat(this._positionsToFlip(pos, color, Board.DIRS[i]));
   }
+    
 };
 
 /**
