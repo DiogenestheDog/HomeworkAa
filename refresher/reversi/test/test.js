@@ -288,7 +288,7 @@ describe("Board", function () {
       fillBoard(testBoard);
       assert.equal(testBoard.validMoves('black').length, 0);
     });
-
+    // assumes up down then left to right
     it('should return an array of valid moves when some are left', function () {
       const validPositions = [
         [2, 3],
