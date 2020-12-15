@@ -1,3 +1,4 @@
+
 export class Tile {
   constructor(board, pos) {
       this.board = board;
